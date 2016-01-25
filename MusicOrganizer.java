@@ -56,12 +56,15 @@ public class MusicOrganizer
      */
     public void playTrack(int index)
     {
-        if(indexValid(index)) {
+        if(indexValid(index) && !playing) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
             track.aumentarPlayCount();
             System.out.println("Now playing: " + track.getDetails());
             playing = true;
+        }
+        else {
+            System.out.println("Ya se está reproduciendo una cancion");
         }
     }
 
