@@ -15,6 +15,8 @@ public class Track
     private String filename;
     // Atributo que cuenta cuantas veces se reproduce una cancion
     private int playCount;
+    // Atributo que almacena el disco al que pertenece una canción
+    private String disco;
     
     /**
      * Constructor for objects of class Track.
@@ -26,6 +28,7 @@ public class Track
     {
         setDetails(artist, title, filename);
         playCount = 0;
+        disco = "unknown";
     }
     
     /**
@@ -72,7 +75,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")" + " se ha reproducido " + playCount + " veces";
+        return artist + ": " + title + "  (file: " + filename + " disco : " + disco + ")" + " se ha reproducido " + playCount + " veces";
     }
     
     /**
@@ -100,5 +103,19 @@ public class Track
      */
     public void resetPlayCount(){
         playCount = 0;
+    }
+    
+    /**
+     * Método que permite fijar el nombre del disco al que pertenece una cancion
+     */
+    public void setDisco(String nombreDisco){
+        disco = nombreDisco;
+    }
+    
+    /**
+     * Método que devuelve el nombre del disco
+     */
+    public String getDisco(){
+        return disco;
     }
 }

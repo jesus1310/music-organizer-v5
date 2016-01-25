@@ -183,4 +183,11 @@ public class MusicOrganizer
             }
         }
     }
+    
+    /**
+     * Método que permite fijar el valor del atributo de la clase track
+     */
+    public void setNewDisco(int indice, String nombreDisco){
+        tracks.get(indice).setDisco(nombreDisco);
+    }
 }
