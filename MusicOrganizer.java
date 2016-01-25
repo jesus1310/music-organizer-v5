@@ -15,6 +15,8 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    // Atributo que nos dice si se está reproduciendo algo
+    private boolean playing;
 
     /**
      * Create a MusicOrganizer
@@ -27,6 +29,7 @@ public class MusicOrganizer
         readLibrary("audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
+        playing = false;
     }
 
     /**
@@ -58,6 +61,7 @@ public class MusicOrganizer
             player.startPlaying(track.getFilename());
             track.aumentarPlayCount();
             System.out.println("Now playing: " + track.getDetails());
+            playing = true;
         }
     }
 
@@ -134,6 +138,7 @@ public class MusicOrganizer
     public void stopPlaying()
     {
         player.stop();
+        playing = false;
     }
 
     /**
@@ -189,5 +194,17 @@ public class MusicOrganizer
      */
     public void setNewDisco(int indice, String nombreDisco){
         tracks.get(indice).setDisco(nombreDisco);
+    }
+    
+    /**
+     * Método que muestra por pantalla los detalles de una cancion si se esta reproduciendo
+     */
+    public void isPlaying(){
+        if (!playing){
+            System.out.println("No hay ninguna reproducción en curso");
+        }
+        else {
+            System.out.println("Hay una reproducción en curso");
+        }
     }
 }
