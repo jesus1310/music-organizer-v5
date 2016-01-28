@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A class to hold details of audio tracks.
@@ -17,6 +18,8 @@ public class MusicOrganizer
     private TrackReader reader;
     // Atributo que nos dice si se está reproduciendo algo
     private boolean playing;
+    // Iterador para recorrer los arraylist
+    Iterator<Track> iterador;
 
     /**
      * Create a MusicOrganizer
@@ -30,6 +33,7 @@ public class MusicOrganizer
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
         playing = false;
+        iterador = tracks.iterator();
     }
 
     /**
@@ -130,8 +134,11 @@ public class MusicOrganizer
      */
     public void playFirst()
     {
-        if(tracks.size() > 0) {
+        if(tracks.size() > 0  && !playing) {
             player.startPlaying(tracks.get(0).getFilename());
+        }
+        else{
+            System.out.println("Ya se está reproduciendo una cancion");
         }
     }
 
@@ -191,14 +198,14 @@ public class MusicOrganizer
             }
         }
     }
-    
+
     /**
      * Método que permite fijar el valor del atributo de la clase track
      */
     public void setNewDisco(int indice, String nombreDisco){
         tracks.get(indice).setDisco(nombreDisco);
     }
-    
+
     /**
      * Método que muestra por pantalla los detalles de una cancion si se esta reproduciendo
      */
@@ -208,6 +215,15 @@ public class MusicOrganizer
         }
         else {
             System.out.println("Hay una reproducción en curso");
+        }
+    }
+    
+    /**
+     * Método que muestra todos los objetos del arraylist utilizando un iterador
+     */
+    public void listAllTracksWithIterator(){
+        while (iterador.hasNext()){
+            System.out.println(iterador.next().getDetails());
         }
     }
 }
