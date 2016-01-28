@@ -237,4 +237,15 @@ public class MusicOrganizer
             }
         }
     }
+    
+    /**
+     * Método que permite eliminar los objetos del arraylist en funcion del titulo pasado por parámetro
+     */
+    public void removeByTitle(String titulo){
+        while (iterador.hasNext()){
+            if (iterador.next().getTitle().contains(titulo)){
+                iterador.remove();
+            }
+        }
+    }
 }
