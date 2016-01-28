@@ -226,4 +226,15 @@ public class MusicOrganizer
             System.out.println(iterador.next().getDetails());
         }
     }
+    
+    /**
+     * Método que permite eliminar los objetos del arraylist en funcion del artista pasado por parámetro
+     */
+    public void removeByArtist(String artista){
+        while (iterador.hasNext()){
+            if (iterador.next().getArtist().contains(artista)){
+                iterador.remove();
+            }
+        }
+    }
 }
